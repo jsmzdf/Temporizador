@@ -42,26 +42,11 @@ class Temporalizador:
 
     def contar(self):
         self.setTAct(self.getTAct()-1)
-        '''for i in range(1,tiempo+1):
-          tiempooras=i
-          segun=0
-          minu=0
-          x='q'
-          mesaje="ejecicio"
-          while (x !='ok'):
-            segun=segun+1
-            minu=minu+1
-            if(segun==60):
-                segun=0
 
-            print(minu)
-            print(str(i)+':'+str(segun))
+class Rutina:
+    def __init__(self):
+        pass
 
-            if(segun==ejercicio):
-               mesaje="descanso"
-
-            if(minu==60):
-                x='ok' '''
 
 def main():
     rut = Temporalizador()
