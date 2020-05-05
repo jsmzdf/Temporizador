@@ -5,11 +5,11 @@
 
 # Metodologia Big Bang
 
-Objetivo : Creación de una aplicación de Software donde el usuario pueda cronometrar el tiempo de dedicación de una rutina y de descanso indicandole por medio de una alarma la finalización de estos procesos.   
+Objetivo : Creación de una aplicación de Software donde el usuario pueda cronometrar el tiempo de dedicación de una rutina de ejercicios y de descanso indicandole por medio de una alarma la finalización de estos procesos.   
 
 Requerimientos:
 
-- Temporizador de la rutina y de descanso con las funciones de inicio, detener y reiniciar.
+- Temporizador de la rutina de ejercicios y de descanso con las funciones de inicio, detener y reiniciar.
 - Indicar con un sonido de alarma la Finalización de los tiempos especificados.  
 
 
