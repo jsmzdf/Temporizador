@@ -16,40 +16,35 @@ rut = Temporalizador()
 def Conteo():
     if rut.getBreak() == True:
         if rut.getTAct() > 0:
-            marco.after(1000,lambda:[rut.contar(),tRut.set(str(float(tTot.get()) - float(tInt.get()) + float(float(rut.getTAct()) / 60.0))), Conteo()])
+            marco.after(1000,lambda:[rut.contar(),tRut.set(str(float(tTot.get()) - float(tInt.get()) + float(float(rut.getTAct()) / 60.0))), mins.set(str(int(float(tTot.get()) - float(tInt.get()) + float(float(rut.getTAct()) / 60.0))) + ":" + str(int(60*float(float(float(tTot.get()) - float(tInt.get()) + float(float(rut.getTAct()) / 60.0))-int(float(tTot.get()) - float(tInt.get()) + float(float(rut.getTAct()) / 60.0)))))), Conteo()])
         else:
             if float(tRut.get()) > 0:
                 PlaySound("alarm.wav", SND_FILENAME)
                 Run()
             else:
+                messagebox.showinfo(title="Terminado", message="Finalizo su sesion de ejercicio por hoy")
                 Rest()
-prueba=True
 
 def Run():
-    global prueba
-    
-    if(prueba==True):
-        print(prueba)
-        try:
-            iRut = float(tRut.get())
-            iInt = float(tInt.get())
-        except:
-            messagebox.showerror(title="Error", message="Ingrese solo numeros, porfavor")
-            tRut.set(0)
-            tInt.set(0)
-            return
-        nInt.set(int(iRut/iInt))
-        tRut.set(str(float(int(nInt.get())*float(tInt.get()))))
-        tTot.set(float(iRut))
-        rut.iniciarCont(iInt*60)
-        Conteo()
-        '''for n in range(nInt):
-            rut.iniciarCont(iInt*60+1)
-            tRut.set(str(float(int(nInt-n)*float(tInt.get()))-int(iInt*60)+rut.getTAct()))
-            print(str(float(int(nInt-n)*float(tInt.get()))-int(iInt*60)+rut.getTAct()))
+    try:
+        iRut = float(tRut.get())
+        iInt = float(tInt.get())
+    except:
+        messagebox.showerror(title="Error", message="Ingrese solo numeros, porfavor")
+        tRut.set(0)
+        tInt.set(0)
+        return
+    nInt.set(int(iRut/iInt))
+    tRut.set(str(float(int(nInt.get())*float(tInt.get()))))
+    tTot.set(float(iRut))
+    rut.iniciarCont(iInt*60)
+    Conteo()
+    '''for n in range(nInt):
+        rut.iniciarCont(iInt*60+1)
+        tRut.set(str(float(int(nInt-n)*float(tInt.get()))-int(iInt*60)+rut.getTAct()))
+        print(str(float(int(nInt-n)*float(tInt.get()))-int(iInt*60)+rut.getTAct()))
             rut.contar()'''
-        prueba=False        
-    
+
 def Stop():
     if rut.getBreak() == True:
         rut.setBreak(False)
@@ -59,8 +54,6 @@ def Stop():
 
 
 def Rest():
-    global prueba
-    prueba=True
     tRut.set(str(float(int(nInt.get())*float(tInt.get()))))
 
 marco = tk.Tk()
@@ -83,6 +76,8 @@ tk.Label(marco, text=" min",bg="#202020",fg="white").grid(row=2, column=4)
 btn=tk.Button(marco, text='Empezar', command=Run).grid(row=3, column=0)
 btn=tk.Button(marco, text='Detener/Continuar', command=Stop).grid(row=3, column=1)
 btn=tk.Button(marco, text='Reiniciar', command=Rest).grid(row=3, column=2)
+mins = tk.StringVar()
+tk.Label(marco, textvariable=mins,bg="#202020",fg="white").grid(row=4, column=1)
 
 def main():
     marco.configure(background='#202020')
